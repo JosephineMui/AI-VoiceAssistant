@@ -37,6 +37,8 @@ def speech_to_text(audio_binary):
     text = 'null'
     while bool(response.get('results')):
         print('speech to text response:', response)
+        # pop() is used to get the last item in the list and remove it from the list. 
+        # We use it here to get the most recent transcription result.
         text = response.get('results').pop().get('alternatives').pop().get('transcript')
         print('recognized text: ', text)
         return text
